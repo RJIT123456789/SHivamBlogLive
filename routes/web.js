@@ -66,7 +66,7 @@ router.post("/viewcategory/:id", checkUserAuth, CategoryController.Categoryview)
 
 
 
-route.get("/verify",FrontController.verifyMail)
+// route.get("/verify",FrontController.verifyMail)
 
 module.exports = router;
 

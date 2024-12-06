@@ -29,46 +29,7 @@ class FrontController {
     }
   };
 
-  static sendVerificationMain = async (name, email, user_id) => {
-    
-      let transport = await nodemainle.createTransport({
-        host: "smtp.gmail.com",
-        post: 587,
 
-        auth:{
-          user: "chauhanshivamsingh799@gmail.com",
-          pass:"itdlrblznhgikywx"
-        },
-      });
-      let info = await transport.sendMail({
-        from: "test@gmail.com", // sender address
-      to: email, // list of receivers
-      subject: ` For Varification mail`, // Subject line
-      text: "heelo", // plain text body
-      html:
-        "<p>Hii " +
-        name +
-        ',Please click here to <a href="https://' +
-        user_id +
-        '">Verify</a>Your mail</p>.',// html body
-      })
-  };
-
-
-static verifyMail = async (req, res) => {
-    try {
-      const updateinfo = await UserModel.findByIdAndUpdate(req.query.id, {
-        is_varified: 1,
-      });
-      if (updateinfo) {
-        res.redirect("/dashboard");
-      } else {
-        res.redirect("/admin/dashboard");
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  };
 
   static blog_form = async (req, res) => {
     try {
