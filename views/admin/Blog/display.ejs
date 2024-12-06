@@ -1,0 +1,113 @@
+<%- include('../../header.ejs') %>
+
+
+
+
+
+    <section class="dashboard-wrap mtb-40">
+        <div class="container">
+            <div class="body-content">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="dash-left">
+                            <ul>
+                                <li class="active"><a href="/admin/dashboard" class="active">Dashboard</a></li>
+                                <li><a href="/admin/blogdisplay">Blogs</a></li>
+                                <li><a href="/admin/categorydisplay">Categories</a></li>
+                                <li><a href="#">Pages</a></li>
+                                <li><a href="/contactdisplay">Contact Bolger</a></li>
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="dash-right">
+                            <div class="dash-header">
+                                <div class="dash-title">
+                                    <h1>Blogs</h1>
+                                </div>
+                                <div class="dash-nav">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal">
+                                        Add Blog
+                                    </button>
+                                </div>
+                            </div>
+                            <table class="table table-bordered table-striped">
+                                <tr>
+                                    <th>#ID</th>
+                                    <th>Title</th>
+                                    <th>description</th>
+                                    <th>image</th>
+                                    <th>Action</th>
+                                </tr>
+                                <% d.forEach((item)=> { %>
+                                    <tr>
+                                        <td><%= item._id %></td>
+                                        <td><%= item.title %></td>
+                                        <td><%= item.description %> </td>
+                                        <td><img src="<%= item.image.url %>" width="50px" alt=""></td>
+                                        <td>
+                                            <a href="/admin/blogview/<%= item._id %>" class="btn btn-info">view</a>
+                                            <a href="/admin/blogedit/<%= item._id %>" class="btn btn-success">edit</a>
+                                            <a href="/admin/blogdelete/<%= item._id %>" class="btn btn-danger">delete</a>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Button trigger modal -->
+
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Blog</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/bloginsert" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="">Title</label>
+                            <input type="text" name="title" id="" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="">Description</label>
+                            <textarea name="description" id="" class="form-control">
+                        </textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="">Image</label>
+                            <input type="file" name="image" id="">
+                        </div>
+
+                        <button type="submit" class="btn btn-info">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('../../footer.ejs') %>

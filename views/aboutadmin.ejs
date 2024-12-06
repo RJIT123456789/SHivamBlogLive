@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    * {
+        background-color: rgb(55, 74, 74);
+    }
+</style>
+<body>
+
+<div class="container mt-5">
+    <h1 class="mb-4">Some Blogger Contacts</h1>
+    <form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>S.no</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% i = 1 %>
+                <% d.forEach((a) => { %>
+                <tr>
+                    <td><%= i++ %></td>
+                    <td><input type="text" class="form-control" name="name" value="<%= a.name %>" required></td>
+                    <td><input type="email" class="form-control" name="email" value="<%= a.email %>" required></td>
+                    <td><input type="text" class="form-control" name="phone" value="<%= a.phone %>" required></td>
+                    <td><textarea class="form-control" name="message" required><%= a.message %></textarea></td>
+                </tr>
+                <% }) %>
+                <!-- You can add more rows as needed -->
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
